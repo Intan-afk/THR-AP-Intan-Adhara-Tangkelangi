@@ -17,6 +17,9 @@ class product {
     protected int releaseYear;
     protected double price;
     public product(String title, int releaseYear, double price){
+         if (title.length() > 255){
+            throw new IllegalArgumentException("Title terlalu panjang");
+        }
         this.title = title;
         this.releaseYear = releaseYear;
         this.price = price;
@@ -31,6 +34,9 @@ class MusicDVD extends product{
     private int runtime;
     public MusicDVD(String title, int releaseYear, double price, int runtime){
         super(title, releaseYear, price);
+        if (runtime >= 720){
+            throw new IllegalArgumentException("Runtime terlalu besar");
+        }
         this.runtime = runtime;
     }
     @Override
@@ -45,6 +51,9 @@ class Magazine extends product{
 
     public Magazine(String title, int releaseYear, double price, String author, int numPages){
       super(title, releaseYear, price);
+      if (author.length() > 50) {
+        throw new IllegalArgumentException("Author terlalu panjang");
+      }
       this.author = author;
       this.numPages = numPages;
     
@@ -60,6 +69,9 @@ class Vinyl extends product{
     private int size;
     public Vinyl(String title, int releaseYear, double price, int size){
         super(title, releaseYear, price);
+        if (size > 12){
+            throw new IllegalArgumentException("Size terlalu besar"); 
+        }
         this.size = size;
     }
     @Override
